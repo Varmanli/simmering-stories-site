@@ -3,7 +3,7 @@ import { Utensils } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-warm-700 text-white py-12">
+    <footer className="bg-warm-700 dark:bg-warm-900 text-white py-12">
       <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           <div className="flex items-center gap-2 mb-4 md:mb-0">
@@ -18,7 +18,7 @@ const Footer = () => {
           </nav>
         </div>
         
-        <div className="border-t border-warm-600 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-warm-600 dark:border-warm-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-warm-200">© {new Date().getFullYear()} Simmering Stories. All rights reserved.</p>
           
           <div className="flex gap-4">

@@ -42,7 +42,7 @@ const ContactForm = () => {
           </p>
         </div>
 
-        <Card className="max-w-2xl mx-auto border-warm-100 opacity-0 animate-fade-in animate-delay-200">
+        <Card className="max-w-2xl mx-auto border-warm-100 dark:border-warm-800 opacity-0 animate-fade-in animate-delay-200 transition-all duration-300 hover:shadow-md">
           <CardContent className="p-6 md:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -54,7 +54,7 @@ const ContactForm = () => {
                     onChange={(e) => setName(e.target.value)}
                     required 
                     placeholder="Jane Doe" 
-                    className="border-warm-200 focus:border-warm-300"
+                    className="border-warm-200 focus:border-warm-300 transition-all duration-200 focus:ring-warm-300/50"
                   />
                 </div>
                 <div className="space-y-2">
@@ -66,7 +66,7 @@ const ContactForm = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     required 
                     placeholder="jane@example.com" 
-                    className="border-warm-200 focus:border-warm-300"
+                    className="border-warm-200 focus:border-warm-300 transition-all duration-200 focus:ring-warm-300/50"
                   />
                 </div>
               </div>
@@ -78,12 +78,12 @@ const ContactForm = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   required
                   placeholder="Share your thoughts, questions, or recipe ideas..."
-                  className="min-h-32 border-warm-200 focus:border-warm-300"
+                  className="min-h-32 border-warm-200 focus:border-warm-300 transition-all duration-200 focus:ring-warm-300/50"
                 />
               </div>
               <Button 
                 type="submit" 
-                className="w-full bg-warm-500 hover:bg-warm-600" 
+                className="w-full bg-warm-500 hover:bg-warm-600 transition-transform duration-200 hover:scale-105" 
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
@@ -93,7 +93,7 @@ const ContactForm = () => {
         </Card>
       </div>
 
-      <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-warm-100 rounded-full opacity-60 blur-3xl"></div>
+      <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-warm-100 dark:bg-warm-700/20 rounded-full opacity-60 blur-3xl"></div>
     </section>
   );
 };

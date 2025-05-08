@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from "./ui/card";
 import { CakeSlice, Pizza, Carrot, CookingPot, Soup, Wheat } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type CategoryCardProps = {
   icon: React.ReactNode;
@@ -10,10 +11,12 @@ type CategoryCardProps = {
 
 const CategoryCard = ({ icon, title, count }: CategoryCardProps) => {
   return (
-    <Card className="group cursor-pointer transition-all hover:shadow-md hover:-translate-y-1 border-warm-100 hover:border-warm-200">
+    <Card className="group cursor-pointer transition-all duration-300 hover:shadow-md hover:-translate-y-1 border-warm-100 hover:border-warm-200">
       <CardContent className="p-6 flex flex-col items-center text-center">
-        <div className="w-16 h-16 rounded-full bg-warm-100 flex items-center justify-center mb-4 group-hover:bg-warm-200 transition-colors">
-          {icon}
+        <div className="w-16 h-16 rounded-full bg-warm-100 flex items-center justify-center mb-4 group-hover:bg-warm-200 transition-colors duration-300 transform group-hover:scale-110">
+          <div className="transition-transform duration-300 group-hover:scale-110">
+            {icon}
+          </div>
         </div>
         <h3 className="font-medium text-lg mb-1">{title}</h3>
         <p className="text-sm text-muted-foreground">{count} recipes</p>
@@ -24,7 +27,7 @@ const CategoryCard = ({ icon, title, count }: CategoryCardProps) => {
 
 const Categories = () => {
   return (
-    <section id="categories" className="py-16 md:py-24 bg-warm-50/50">
+    <section id="categories" className="py-16 md:py-24 bg-warm-50/50 dark:bg-warm-900/10">
       <div className="container">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in">Recipe Categories</h2>
