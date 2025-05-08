@@ -131,6 +131,17 @@
   to { transform: scale(1); opacity: 1; }
 }
 
+@keyframes textReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes subtlePulse {
+  0% { opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
+}
+
 .hover-scale {
   @apply transition-transform duration-200 hover:scale-105;
 }
@@ -138,4 +149,21 @@
 /* Improve focus styles for accessibility */
 :focus-visible {
   @apply outline-none ring-2 ring-warm-500 ring-offset-2 ring-offset-background;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-text-reveal {
+  animation: textReveal 0.8s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 3s ease-in-out infinite;
 }

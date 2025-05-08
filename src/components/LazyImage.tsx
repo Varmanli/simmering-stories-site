@@ -6,20 +6,36 @@ interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   className?: string;
+  priority?: boolean;
 }
 
-const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, ...props }) => {
+const LazyImage: React.FC<LazyImageProps> = ({ 
+  src, 
+  alt, 
+  className, 
+  priority = false,
+  ...props 
+}) => {
   const [imageSrc, setImageSrc] = useState('');
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
-    const img = new Image();
-    img.src = src;
-    img.onload = () => {
+    if (priority) {
       setImageSrc(src);
-      setImageLoaded(true);
-    };
-  }, [src]);
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setImageLoaded(true);
+      };
+    } else {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setImageSrc(src);
+        setImageLoaded(true);
+      };
+    }
+  }, [src, priority]);
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
@@ -30,11 +46,11 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt, className, ...props }) 
         src={imageSrc}
         alt={alt}
         className={cn(
-          "transition-opacity duration-300 ease-in-out",
+          "transition-opacity duration-500 ease-in-out",
           imageLoaded ? "opacity-100" : "opacity-0",
           className
         )}
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
         {...props}
       />
     </div>
