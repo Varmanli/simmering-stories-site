@@ -2,7 +2,7 @@
 import { Card } from "./ui/card";
 import LazyImage from "./LazyImage";
 import { Button } from "./ui/button";
-import { Instagram, Heart } from "lucide-react";
+import { Instagram, Heart, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type InstagramPostProps = {
@@ -49,8 +49,13 @@ const InstagramFeed = () => {
     }
   ];
 
+  const handleInstagramClick = () => {
+    // Open Instagram in a new tab
+    window.open('https://instagram.com/simmeringstories', '_blank');
+  };
+
   return (
-    <section className="py-16 md:py-24">
+    <section id="instagram" className="py-16 md:py-24">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
           <div className="md:max-w-md">
@@ -64,10 +69,12 @@ const InstagramFeed = () => {
           </div>
 
           <Button 
-            className="bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 transition-all duration-200 hover:scale-105 shadow-sm"
+            onClick={handleInstagramClick}
+            className="bg-gradient-to-r from-warm-500 to-warm-600 hover:from-warm-600 hover:to-warm-700 transition-all duration-200 hover:scale-105 shadow-sm flex items-center gap-2"
           >
-            <Instagram className="mr-2 h-5 w-5" />
-            @simmeringstories
+            <Instagram className="h-5 w-5" />
+            Follow @simmeringstories
+            <ExternalLink className="h-4 w-4" />
           </Button>
         </div>
 
@@ -75,6 +82,17 @@ const InstagramFeed = () => {
           {posts.map((post, index) => (
             <InstagramPost key={index} {...post} />
           ))}
+        </div>
+        
+        <div className="mt-8 text-center">
+          <Button 
+            onClick={handleInstagramClick}
+            variant="outline" 
+            className="border-warm-200 hover:bg-warm-100/50 hover:border-warm-300 transition-all duration-200"
+          >
+            View More on Instagram
+            <ExternalLink className="ml-2 h-4 w-4" />
+          </Button>
         </div>
       </div>
     </section>

@@ -1,8 +1,9 @@
 
-import { Card, CardContent } from "./ui/card";
+import { Card, CardContent, CardFooter } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 import LazyImage from "./LazyImage";
-import { Clock, Utensils } from "lucide-react";
 
 type RecipeCardProps = {
   image: string;
@@ -14,7 +15,7 @@ type RecipeCardProps = {
 
 const RecipeCard = ({ image, title, description, time, category }: RecipeCardProps) => {
   return (
-    <Card className="overflow-hidden group transition-all duration-300 hover:shadow-lg border-warm-100 dark:border-warm-800/50">
+    <Card className="overflow-hidden group transition-all duration-300 hover:shadow-lg border-warm-100 dark:border-warm-800/50 flex flex-col">
       <div className="relative aspect-[4/3] overflow-hidden">
         <LazyImage 
           src={image} 
@@ -27,7 +28,7 @@ const RecipeCard = ({ image, title, description, time, category }: RecipeCardPro
           </Badge>
         </div>
       </div>
-      <CardContent className="p-5">
+      <CardContent className="p-5 flex-grow">
         <h3 className="font-bold text-lg mb-2 group-hover:text-warm-600 dark:group-hover:text-warm-400 transition-colors">
           {title}
         </h3>
@@ -35,10 +36,19 @@ const RecipeCard = ({ image, title, description, time, category }: RecipeCardPro
           {description}
         </p>
         <div className="flex items-center text-xs text-muted-foreground">
-          <Clock className="w-3.5 h-3.5 mr-1" />
+          <span className="mr-1">⏱️</span>
           <span>{time}</span>
         </div>
       </CardContent>
+      <CardFooter className="pt-0 pb-5 px-5">
+        <Button 
+          variant="outline" 
+          className="w-full border-warm-200 hover:bg-warm-100/50 hover:border-warm-300 transition-all duration-200 text-sm"
+        >
+          Read Recipe
+          <ArrowRight className="ml-2 h-3.5 w-3.5" />
+        </Button>
+      </CardFooter>
     </Card>
   );
 };
@@ -69,7 +79,7 @@ const LatestRecipes = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24">
+    <section id="latest-recipes" className="py-16 md:py-24">
       <div className="container">
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in">Latest Recipes</h2>
@@ -82,6 +92,14 @@ const LatestRecipes = () => {
           {recipes.map((recipe, index) => (
             <RecipeCard key={index} {...recipe} />
           ))}
+        </div>
+        
+        <div className="mt-12 text-center opacity-0 animate-fade-in animate-delay-300">
+          <Button 
+            className="bg-warm-500 hover:bg-warm-600 transition-transform duration-200 hover:scale-105"
+          >
+            View All Recipes
+          </Button>
         </div>
       </div>
     </section>

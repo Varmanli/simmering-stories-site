@@ -2,6 +2,7 @@
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { ArrowRight } from "lucide-react";
 import LazyImage from "./LazyImage";
 
 const FeaturedRecipe = () => {
@@ -48,8 +49,11 @@ const FeaturedRecipe = () => {
                     <p className="text-sm text-muted-foreground">Fresh salmon, cherry tomatoes, olives, lemon, olive oil, garlic, herbs</p>
                   </div>
                   
-                  <Button className="bg-warm-500 hover:bg-warm-600 transition-transform duration-200 hover:scale-105">
+                  <Button 
+                    className="bg-warm-500 hover:bg-warm-600 transition-transform duration-200 hover:scale-105 flex items-center gap-2"
+                  >
                     View Full Recipe
+                    <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
               </div>

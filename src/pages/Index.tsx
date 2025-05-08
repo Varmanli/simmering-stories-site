@@ -19,9 +19,15 @@ const Index = () => {
         <Hero />
         <FeaturedRecipe />
         <Categories />
-        <LatestRecipes />
-        <BehindTheScenes />
-        <CookingTips />
+        <div id="italian-recipes" className="scroll-mt-24">
+          <LatestRecipes />
+        </div>
+        <div id="persian-recipes" className="scroll-mt-24">
+          <BehindTheScenes />
+        </div>
+        <div id="vegetarian-recipes" className="scroll-mt-24">
+          <CookingTips />
+        </div>
         <NewsletterSignup />
         <InstagramFeed />
         <ContactForm />
